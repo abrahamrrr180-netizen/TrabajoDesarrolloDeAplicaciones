@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cómo monté un rastreador de precios de gasolineras en Java - Bitácora</title>
-  <meta name="description" content="El Ministerio publica el precio de cada gasolinera de España varias veces al día. Con Java y Swing lo convertí en una aplicación de escritorio para saber dónde repostar.">
+  <title>Mi rastreador de precios de gasolineras en Java - Bitácora</title>
+  <meta name="description" content="Una aplicación de escritorio que hice para saber qué gasolinera es la más barata usando los datos abiertos del Ministerio.">
   <meta name="author" content="Abraham Rajo Rodríguez">
   <link rel="icon" href="/TrabajoDesarrolloDeAplicaciones/img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/TrabajoDesarrolloDeAplicaciones/css/style.css">
@@ -24,57 +24,37 @@
 
   <main class="contenedor">
     <article class="entrada">
-  <h1>Cómo monté un rastreador de precios de gasolineras en Java</h1>
+  <h1>Mi rastreador de precios de gasolineras en Java</h1>
   <p class="meta">
     5 de octubre de 2026 · <a href="/TrabajoDesarrolloDeAplicaciones/etiquetas/java/">#java</a> <a href="/TrabajoDesarrolloDeAplicaciones/etiquetas/datos-abiertos/">#datos abiertos</a> <a href="/TrabajoDesarrolloDeAplicaciones/etiquetas/proyectos/">#proyectos</a>
   </p>
 
-  <img class="portada" src="/TrabajoDesarrolloDeAplicaciones/img/portada-gasolineras.svg" alt="Ilustración de un surtidor junto a un panel con precios de gasolina y gasóleo" width="1200" height="630">
+  <img class="portada" src="/TrabajoDesarrolloDeAplicaciones/img/portada-gasolineras.svg" alt="Dibujo de un surtidor y un panel con precios de gasolina" width="1200" height="630">
 
-  <p>Entre dos gasolineras de la misma ciudad puede haber diez o quince céntimos de diferencia por litro. En un depósito de 50 litros son unos 6 € cada vez que repostas, así que quise tener una herramienta que me dijera de un vistazo cuál es la más barata cerca de casa. De ahí salió este proyecto: una aplicación de escritorio en <strong>Java</strong> que descarga los precios oficiales, los filtra y los ordena.</p>
-<h2>De dónde salen los datos</h2>
-<p>El Ministerio para la Transición Ecológica mantiene el <strong>Geoportal de Gasolineras</strong>, y detrás hay un servicio REST público que devuelve en JSON todas las estaciones de servicio terrestres con sus precios. No hace falta registrarse ni pedir una clave. Cada estación viene con campos como <code>Rótulo</code>, <code>Dirección</code>, <code>Municipio</code>, <code>Provincia</code>, <code>Horario</code>, <code>Latitud</code>, <code>Longitud (WGS84)</code> y un precio por cada combustible (<code>Precio Gasolina 95 E5</code>, <code>Precio Gasoleo A</code>…).</p>
-<blockquote>
-<p>Son datos abiertos: cualquiera puede reutilizarlos, y eso es lo que hace posible un proyecto así sin pagar a nadie.</p>
-</blockquote>
-<h2>Cómo está organizado</h2>
-<p>Separé la aplicación en capas para que cada parte hiciera una sola cosa y pudiera cambiarla sin romper el resto:</p>
-<figure class="ancha">
-  <img src="/TrabajoDesarrolloDeAplicaciones/img/gasolineras-arquitectura.svg" alt="Diagrama de capas: API del Ministerio, lector, parser, modelo y vista Swing" width="1200" height="300" loading="lazy">
-  <figcaption>Flujo de datos de la aplicación, de la API a la tabla que ve el usuario.</figcaption>
-</figure>
+  <p>Hace un tiempo me di cuenta de que entre gasolineras de la misma ciudad podía haber más de 10 céntimos de diferencia por litro. Llenando el depósito eso son varios euros cada vez, así que decidí hacerme un programa en Java que me dijera cuál es la más barata.</p>
+<h2>De dónde saco los precios</h2>
+<p>El Ministerio publica los precios de todas las gasolineras de España en un servicio web gratuito que devuelve los datos en JSON. Para cada gasolinera viene el nombre, la dirección, el municipio, la provincia y el precio de cada combustible. No hace falta registrarse, así que es perfecto para un proyecto personal.</p>
+<h2>Cómo funciona</h2>
+<p>El programa tiene cuatro partes:</p>
 <ol>
-<li><strong>Lector</strong>: descarga el JSON (o lo lee de un fichero guardado, que me vino muy bien para probar sin depender de la red).</li>
-<li><strong>Parser</strong>: convierte cada estación en un objeto <code>Estacion</code> con tipos de verdad (<code>double</code> para los precios, no <code>String</code>).</li>
-<li><strong>Modelo</strong>: una <code>List&lt;Estacion&gt;</code> envuelta en un <code>AbstractTableModel</code>, con los filtros por provincia, combustible y municipio.</li>
-<li><strong>Vista</strong>: una ventana Swing con una <code>JTable</code> y un <code>TableRowSorter</code> para ordenar por cualquier columna con un clic.</li>
+<li>Descarga los datos (o los lee de un fichero guardado para hacer pruebas).</li>
+<li>Los convierte en objetos <code>Estacion</code>.</li>
+<li>Los filtra por provincia y combustible.</li>
+<li>Los muestra en una ventana hecha con Swing, en una tabla que se puede ordenar por precio.</li>
 </ol>
-<h2>Los detalles que dieron guerra</h2>
-<p><strong>La coma decimal.</strong> Los precios llegan como texto con formato español: <code>&quot;1,589&quot;</code>. <code>Double.parseDouble</code> espera un punto, así que el primer intento reventó con <code>NumberFormatException</code>. Lo resolví normalizando antes de convertir:</p>
-<pre><code class="language-java">static double precio(String valor) {
-    if (valor == null || valor.isBlank()) return Double.NaN; // no vende ese combustible
-    return Double.parseDouble(valor.trim().replace(',', '.'));
-}
-</code></pre>
-<p><strong>Campos vacíos.</strong> No todas las estaciones venden todos los combustibles; cuando no hay precio el campo llega vacío. Usar <code>NaN</code> y mandar esas filas al final al ordenar fue más limpio que inventar un cero, que las habría puesto las primeras.</p>
-<p><strong>La interfaz congelada.</strong> La descarga tarda unos segundos y, si se hace en el hilo de eventos de Swing, la ventana se queda bloqueada. Moví la descarga y el parseo a un <code>SwingWorker</code> y solo actualizo la tabla en <code>done()</code>, que ya se ejecuta en el hilo correcto.</p>
-<p><strong>Las tildes.</strong> Leer la respuesta sin indicar la codificación convertía «Logroño» en algo ilegible. Leer siempre con <code>StandardCharsets.UTF_8</code> lo arregló.</p>
-<figure>
-  <img src="/TrabajoDesarrolloDeAplicaciones/img/gasolineras-ventana.svg" alt="Ventana con filtros de provincia y combustible y una tabla de estaciones ordenada por precio" width="1200" height="560" loading="lazy">
-  <figcaption>Esquema de la ventana principal: filtros arriba y tabla ordenable debajo (datos de ejemplo).</figcaption>
-</figure>
-<h2>Qué haría ahora</h2>
+<p><img src="/TrabajoDesarrolloDeAplicaciones/img/gasolineras-arquitectura.svg" alt="Esquema con las partes del programa"></p>
+<h2>Problemas que me encontré</h2>
 <ul>
-<li><strong>Guardar un histórico</strong> en SQLite para ver cómo evoluciona el precio de cada estación y detectar qué día de la semana sale más barato.</li>
-<li><strong>Ordenar por distancia</strong> usando la latitud y longitud que ya vienen en los datos (fórmula de Haversine).</li>
-<li><strong>Separar la lógica de Swing</strong> del todo para poder reutilizarla en una versión web.</li>
+<li>Los precios vienen con coma (<code>1,589</code>) y Java espera un punto, así que al principio me daba error al convertirlos. Lo arreglé cambiando la coma por un punto antes de convertir.</li>
+<li>Algunas gasolineras no venden todos los combustibles y el precio viene vacío.</li>
+<li>Mientras descargaba los datos la ventana se quedaba congelada. Lo solucioné haciendo la descarga en segundo plano con <code>SwingWorker</code>.</li>
 </ul>
-<p>Lo más útil del proyecto no fue la aplicación en sí, sino ver lo mucho que se puede construir con datos abiertos y un par de clases bien separadas.</p>
+<p>Me gustaría añadirle un mapa y guardar los precios de cada día para ver cómo cambian.</p>
 
 </article>
 
 <nav class="contiguas"><span></span>
-  <a href="/TrabajoDesarrolloDeAplicaciones/entradas/regla-del-4-y-el-2/">Outs y la regla del 4 y el 2, con números de verdad »</a>
+  <a href="/TrabajoDesarrolloDeAplicaciones/entradas/regla-del-4-y-el-2/">La regla del 4 y el 2 en el póker »</a>
 </nav>
 <p><a href="/TrabajoDesarrolloDeAplicaciones/">← Volver al inicio</a></p>
 

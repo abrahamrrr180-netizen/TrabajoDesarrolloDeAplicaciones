@@ -94,7 +94,8 @@ h1, h2, h3 { line-height: 1.25; }
   border-radius: 8px;
   margin: 10px 0 20px;
 }
-.entrada h2 { margin-top: 35px; }
+.entrada h2 { margin-top: 30px; font-size: 22px; }
+.entrada p img { display: block; margin: 20px auto; border: 1px solid #ddd; }
 
 figure { margin: 25px 0; }
 figure img { border: 1px solid #ddd; border-radius: 6px; }
