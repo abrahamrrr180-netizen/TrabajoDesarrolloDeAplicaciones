@@ -38,16 +38,15 @@
 <p>El programa tiene cuatro partes:</p>
 <ol>
 <li>Descarga los datos (o los lee de un fichero guardado para hacer pruebas).</li>
-<li>Los convierte en objetos <code>Estacion</code>.</li>
+<li>Guarda la información de cada gasolinera.</li>
 <li>Los filtra por provincia y combustible.</li>
 <li>Los muestra en una ventana hecha con Swing, en una tabla que se puede ordenar por precio.</li>
 </ol>
-<p><img src="/TrabajoDesarrolloDeAplicaciones/img/gasolineras-arquitectura.svg" alt="Esquema con las partes del programa"></p>
 <h2>Problemas que me encontré</h2>
 <ul>
-<li>Los precios vienen con coma (<code>1,589</code>) y Java espera un punto, así que al principio me daba error al convertirlos. Lo arreglé cambiando la coma por un punto antes de convertir.</li>
+<li>Los precios vienen con coma (1,589) y Java espera un punto, así que al principio me daba error al convertirlos. Lo arreglé cambiando la coma por un punto antes de convertir.</li>
 <li>Algunas gasolineras no venden todos los combustibles y el precio viene vacío.</li>
-<li>Mientras descargaba los datos la ventana se quedaba congelada. Lo solucioné haciendo la descarga en segundo plano con <code>SwingWorker</code>.</li>
+<li>Mientras descargaba los datos la ventana se quedaba congelada. Lo solucioné haciendo la descarga en segundo plano.</li>
 </ul>
 <p>Me gustaría añadirle un mapa y guardar los precios de cada día para ver cómo cambian.</p>
 

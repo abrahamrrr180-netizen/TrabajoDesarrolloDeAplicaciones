@@ -140,7 +140,6 @@ save("portada-poker.svg", f"""
 {fichas}
 {cartas}
 <text x="920" y="200" {SERIF} font-size="64" font-weight="700" fill="#F4EFE6">9 outs</text>
-<text x="920" y="240" {MONO} font-size="24" fill="#BFE3CF">≈ 35 % al river</text>
 """, label="Mesa de póker con un proyecto de color de corazones en el flop")
 
 # ---------------------------------------------------------------- fig: gráfica outs

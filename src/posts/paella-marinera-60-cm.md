@@ -35,8 +35,6 @@ Uso más o menos 3 partes de caldo por cada parte de arroz.
 9. Al final subo el fuego un minuto para que se haga el socarrat.
 10. Lo dejo reposar 5 minutos tapado con un paño.
 
-![Gráfico con la intensidad del fuego en cada paso](/img/paella-fuego.svg)
-
 ## Consejos
 
 - No remover el arroz después de echarlo.

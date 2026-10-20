@@ -2,7 +2,7 @@
 title: La regla del 4 y el 2 en el póker
 date: 2026-10-12
 tags: [probabilidad, póker]
-resumen: Un truco muy sencillo para calcular en la mesa la probabilidad de ligar tu jugada, y lo he comparado con el cálculo exacto.
+resumen: Un truco muy sencillo para saber en la mesa qué posibilidades tienes de ligar tu jugada.
 portada: /img/portada-poker.svg
 portadaAlt: Dibujo de una mesa de póker con cartas y fichas
 ---
@@ -20,17 +20,8 @@ Los *outs* son las cartas que quedan en la baraja y que te hacen ganar la mano. 
 
 Con el ejemplo del color: 9 × 4 = 36 % en el flop y 9 × 2 = 18 % en el turn.
 
-## ¿Funciona de verdad?
+## Para qué sirve
 
-Quería comprobarlo, así que calculé la probabilidad exacta. Después del flop quedan 47 cartas que no conoces, y la probabilidad de no ligar en ninguna de las dos es (47 − n)/47 · (46 − n)/46. Restándolo a 1 sale la probabilidad de ligar. Para 9 outs da un **35 %**, muy cerca del 36 % de la regla.
+Lo bueno de esta regla es que se hace de cabeza en un momento. Si la probabilidad de ligar es alta y la apuesta que tienes que pagar es pequeña, normalmente merece la pena seguir. Si es baja y te piden mucho, mejor tirar las cartas.
 
-| Outs | Regla del 4 | Exacto |
-|---|---|---|
-| 4 | 16 % | 16,5 % |
-| 8 | 32 % | 31,5 % |
-| 9 | 36 % | 35 % |
-| 15 | 60 % | 54 % |
-
-![Gráfica comparando la regla del 4 con la probabilidad exacta](/img/poker-grafica.svg)
-
-Hasta unos 9 outs la regla es casi perfecta, pero con muchos outs se pasa. Leí que se corrige restando (outs − 8) cuando tienes más de 8, y con 15 outs da 53 %, que ya se acerca bastante.
+No es exacta del todo, pero para jugar con amigos es más que suficiente.

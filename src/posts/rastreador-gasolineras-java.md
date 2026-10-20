@@ -18,16 +18,14 @@ El Ministerio publica los precios de todas las gasolineras de España en un serv
 El programa tiene cuatro partes:
 
 1. Descarga los datos (o los lee de un fichero guardado para hacer pruebas).
-2. Los convierte en objetos `Estacion`.
+2. Guarda la información de cada gasolinera.
 3. Los filtra por provincia y combustible.
 4. Los muestra en una ventana hecha con Swing, en una tabla que se puede ordenar por precio.
 
-![Esquema con las partes del programa](/img/gasolineras-arquitectura.svg)
-
 ## Problemas que me encontré
 
-- Los precios vienen con coma (`1,589`) y Java espera un punto, así que al principio me daba error al convertirlos. Lo arreglé cambiando la coma por un punto antes de convertir.
+- Los precios vienen con coma (1,589) y Java espera un punto, así que al principio me daba error al convertirlos. Lo arreglé cambiando la coma por un punto antes de convertir.
 - Algunas gasolineras no venden todos los combustibles y el precio viene vacío.
-- Mientras descargaba los datos la ventana se quedaba congelada. Lo solucioné haciendo la descarga en segundo plano con `SwingWorker`.
+- Mientras descargaba los datos la ventana se quedaba congelada. Lo solucioné haciendo la descarga en segundo plano.
 
 Me gustaría añadirle un mapa y guardar los precios de cada día para ver cómo cambian.

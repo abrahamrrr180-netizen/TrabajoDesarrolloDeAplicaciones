@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>La regla del 4 y el 2 en el póker - Bitácora</title>
-  <meta name="description" content="Un truco muy sencillo para calcular en la mesa la probabilidad de ligar tu jugada, y lo he comparado con el cálculo exacto.">
+  <meta name="description" content="Un truco muy sencillo para saber en la mesa qué posibilidades tienes de ligar tu jugada.">
   <meta name="author" content="Abraham Rajo Rodríguez">
   <link rel="icon" href="/TrabajoDesarrolloDeAplicaciones/img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/TrabajoDesarrolloDeAplicaciones/css/style.css">
@@ -40,41 +40,9 @@
 <li>En el turn (queda una carta): outs × 2.</li>
 </ul>
 <p>Con el ejemplo del color: 9 × 4 = 36 % en el flop y 9 × 2 = 18 % en el turn.</p>
-<h2>¿Funciona de verdad?</h2>
-<p>Quería comprobarlo, así que calculé la probabilidad exacta. Después del flop quedan 47 cartas que no conoces, y la probabilidad de no ligar en ninguna de las dos es (47 − n)/47 · (46 − n)/46. Restándolo a 1 sale la probabilidad de ligar. Para 9 outs da un <strong>35 %</strong>, muy cerca del 36 % de la regla.</p>
-<table>
-<thead>
-<tr>
-<th>Outs</th>
-<th>Regla del 4</th>
-<th>Exacto</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>4</td>
-<td>16 %</td>
-<td>16,5 %</td>
-</tr>
-<tr>
-<td>8</td>
-<td>32 %</td>
-<td>31,5 %</td>
-</tr>
-<tr>
-<td>9</td>
-<td>36 %</td>
-<td>35 %</td>
-</tr>
-<tr>
-<td>15</td>
-<td>60 %</td>
-<td>54 %</td>
-</tr>
-</tbody>
-</table>
-<p><img src="/TrabajoDesarrolloDeAplicaciones/img/poker-grafica.svg" alt="Gráfica comparando la regla del 4 con la probabilidad exacta"></p>
-<p>Hasta unos 9 outs la regla es casi perfecta, pero con muchos outs se pasa. Leí que se corrige restando (outs − 8) cuando tienes más de 8, y con 15 outs da 53 %, que ya se acerca bastante.</p>
+<h2>Para qué sirve</h2>
+<p>Lo bueno de esta regla es que se hace de cabeza en un momento. Si la probabilidad de ligar es alta y la apuesta que tienes que pagar es pequeña, normalmente merece la pena seguir. Si es baja y te piden mucho, mejor tirar las cartas.</p>
+<p>No es exacta del todo, pero para jugar con amigos es más que suficiente.</p>
 
 </article>
 
