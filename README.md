@@ -10,11 +10,11 @@ Autor: Abraham Rajo Rodríguez.
 Un blog con tres entradas (texto + imágenes), hecho con HTML y CSS propios y generado con
 [Eleventy](https://www.11ty.dev/). No usa JavaScript en el navegador.
 
-- Inicio con la entrada destacada y tarjetas del resto.
-- Página de cada entrada con migas de pan, etiquetas, tiempo de lectura y enlaces a la entrada anterior/siguiente.
-- Archivo cronológico, índice de etiquetas y una página por etiqueta.
+- Inicio con la lista de entradas (imagen, fecha y resumen).
+- Página de cada entrada con sus etiquetas y enlaces a la entrada anterior/siguiente.
+- Archivo, índice de etiquetas y una página por etiqueta.
 - Página «Sobre mí» y página 404 propia.
-- Diseño adaptable a móvil y modo oscuro automático (`prefers-color-scheme`).
+- Diseño sencillo y adaptable a móvil.
 
 ## Estructura
 

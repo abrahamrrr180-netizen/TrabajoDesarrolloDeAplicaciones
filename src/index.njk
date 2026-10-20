@@ -1,31 +1,10 @@
 ---
 layout: base.njk
 ---
-<section class="portadilla contenedor">
-  <p class="portadilla__antetitulo">Blog de {{ site.autor }}</p>
-  <h1 class="portadilla__titulo">Código, números <em>y algún arroz</em>.</h1>
-  <p class="portadilla__texto">Estudio Ingeniería Informática y aquí apunto lo que voy aprendiendo fuera de los apuntes: proyectos que programo, cuentas que me ayudan a decidir mejor y recetas que he afinado a base de repetirlas.</p>
-  <p class="portadilla__acciones">
-    <a class="boton" href="{{ collections.entradas[0].url }}">Leer la última entrada</a>
-    <a class="boton boton--secundario" href="/archivo/">Ver el archivo</a>
-  </p>
-</section>
+<h1>Bienvenido a mi blog</h1>
+<p>Soy Abraham, estudiante de Ingeniería Informática. Aquí escribo sobre proyectos que programo, algún cálculo curioso y recetas que me salen bien.</p>
 
-<section class="contenedor" aria-labelledby="t-recientes">
-  <h2 class="seccion__titulo" id="t-recientes">Entradas recientes</h2>
-  <div class="rejilla">
-    {%- for e in collections.entradas %}
-      {%- set destacada = loop.first %}
-      {% include "tarjeta.njk" %}
-    {%- endfor %}
-  </div>
-</section>
-
-<section class="contenedor temas" aria-labelledby="t-temas">
-  <h2 class="seccion__titulo" id="t-temas">Explorar por tema</h2>
-  <ul class="etiquetas etiquetas--grandes">
-    {%- for t in collections.etiquetas %}
-    <li><a class="etiqueta" href="/etiquetas/{{ t | slugTag }}/">{{ t }} <span>{{ collections[t].length }}</span></a></li>
-    {%- endfor %}
-  </ul>
-</section>
+<h2 class="seccion">Últimas entradas</h2>
+{%- for e in collections.entradas %}
+  {% include "tarjeta.njk" %}
+{%- endfor %}

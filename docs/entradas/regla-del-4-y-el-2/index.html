@@ -3,26 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Outs y la regla del 4 y el 2, con números de verdad · Bitácora · Abraham Rajo Rodríguez</title>
+  <title>Outs y la regla del 4 y el 2, con números de verdad - Bitácora</title>
   <meta name="description" content="Multiplicar los outs por 4 o por 2 es el atajo más usado en la mesa. Aquí comparo la regla con la probabilidad exacta y explico de dónde sale y cuándo empieza a fallar.">
   <meta name="author" content="Abraham Rajo Rodríguez">
-  <meta name="color-scheme" content="light dark">
   <link rel="icon" href="/TrabajoDesarrolloDeAplicaciones/img/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/TrabajoDesarrolloDeAplicaciones/css/style.css">
 </head>
-<body id="arriba">
-  <a class="saltar" href="#contenido">Saltar al contenido</a>
-
+<body>
   <header class="cabecera">
-    <div class="contenedor cabecera__fila">
-      <a class="marca" href="/TrabajoDesarrolloDeAplicaciones/" aria-label="Bitácora, ir al inicio">
-        <img src="/TrabajoDesarrolloDeAplicaciones/img/favicon.svg" alt="" width="28" height="28">
-        <span>Bitácora</span>
-      </a>
-      <nav class="menu" aria-label="Navegación principal">
+    <div class="contenedor">
+      <a class="marca" href="/TrabajoDesarrolloDeAplicaciones/">Bitácora</a>
+      <nav class="menu">
         <a href="/TrabajoDesarrolloDeAplicaciones/">Inicio</a>
         <a href="/TrabajoDesarrolloDeAplicaciones/archivo/">Archivo</a>
         <a href="/TrabajoDesarrolloDeAplicaciones/etiquetas/">Etiquetas</a>
@@ -31,33 +22,16 @@
     </div>
   </header>
 
-  <main id="contenido">
+  <main class="contenedor">
     <article class="entrada">
-  <header class="entrada__cabecera contenedor contenedor--estrecho">
-    <nav class="miga" aria-label="Ruta">
-      <a href="/TrabajoDesarrolloDeAplicaciones/">Inicio</a> <span aria-hidden="true">/</span>
-      <a href="/TrabajoDesarrolloDeAplicaciones/archivo/">Archivo</a> <span aria-hidden="true">/</span>
-      <span aria-current="page">Outs y la regla del 4 y el 2, con números de verdad</span>
-    </nav>
-    <ul class="etiquetas">
-      <li><a class="etiqueta" href="/TrabajoDesarrolloDeAplicaciones/etiquetas/probabilidad/">probabilidad</a></li>
-      <li><a class="etiqueta" href="/TrabajoDesarrolloDeAplicaciones/etiquetas/poker/">póker</a></li>
-    </ul>
-    <h1>Outs y la regla del 4 y el 2, con números de verdad</h1>
-    <p class="entrada__entradilla">Multiplicar los outs por 4 o por 2 es el atajo más usado en la mesa. Aquí comparo la regla con la probabilidad exacta y explico de dónde sale y cuándo empieza a fallar.</p>
-    <p class="meta">
-      <time datetime="2026-10-12">12 de octubre de 2026</time>
-      <span aria-hidden="true">·</span> 3 min de lectura
-      <span aria-hidden="true">·</span> Abraham Rajo Rodríguez
-    </p>
-  </header>
+  <h1>Outs y la regla del 4 y el 2, con números de verdad</h1>
+  <p class="meta">
+    12 de octubre de 2026 · <a href="/TrabajoDesarrolloDeAplicaciones/etiquetas/probabilidad/">#probabilidad</a> <a href="/TrabajoDesarrolloDeAplicaciones/etiquetas/poker/">#póker</a>
+  </p>
 
-  <figure class="portada contenedor">
-    <img src="/TrabajoDesarrolloDeAplicaciones/img/portada-poker.svg" alt="Mesa de póker con un as y un rey de corazones y un flop con dos corazones" width="1200" height="630">
-  </figure>
+  <img class="portada" src="/TrabajoDesarrolloDeAplicaciones/img/portada-poker.svg" alt="Mesa de póker con un as y un rey de corazones y un flop con dos corazones" width="1200" height="630">
 
-  <div class="prosa contenedor contenedor--estrecho">
-    <p>En Texas Hold'em casi nunca tienes la mejor mano en el flop; lo normal es ir «proyectado» y necesitar una carta concreta. La pregunta es siempre la misma: <strong>¿me compensa pagar para verla?</strong> Para responderla en la mesa, sin calculadora, existe la regla del 4 y el 2. Quería comprobar hasta qué punto es fiable.</p>
+  <p>En Texas Hold'em casi nunca tienes la mejor mano en el flop; lo normal es ir «proyectado» y necesitar una carta concreta. La pregunta es siempre la misma: <strong>¿me compensa pagar para verla?</strong> Para responderla en la mesa, sin calculadora, existe la regla del 4 y el 2. Quería comprobar hasta qué punto es fiable.</p>
 <h2>Qué es un out</h2>
 <p>Un <em>out</em> es cada carta que queda en la baraja y que mejora tu mano hasta ganar. Ejemplo típico: llevas <strong>A♥ K♥</strong> y el flop es <strong>9♥ 4♥ Q♠</strong>. Tienes cuatro corazones; quedan 13 − 4 = <strong>9 corazones</strong> en la baraja, así que tienes 9 outs para el color.</p>
 <p>Después del flop conoces 5 cartas (tus 2 y las 3 de la mesa), por lo que quedan <strong>47 desconocidas</strong>.</p>
@@ -141,31 +115,19 @@
 </ul>
 <p class="nota">Error que cometía al principio: usar la regla del 4 en el flop cuando el rival todavía puede apostar en el turn. Si vas a tener que pagar otra vez, lo correcto es usar la regla del 2 en cada calle.</p>
 
-  </div>
-
-  <nav class="contiguas contenedor contenedor--estrecho" aria-label="Más entradas">
-    <a class="contigua" href="/TrabajoDesarrolloDeAplicaciones/entradas/rastreador-gasolineras-java/" rel="prev">
-      <span class="contigua__rotulo">← Entrada anterior</span>
-      <span class="contigua__titulo">Cómo monté un rastreador de precios de gasolineras en Java</span>
-    </a>
-    <a class="contigua contigua--der" href="/TrabajoDesarrolloDeAplicaciones/entradas/paella-marinera-60-cm/" rel="next">
-      <span class="contigua__rotulo">Entrada siguiente →</span>
-      <span class="contigua__titulo">Paella marinera para 12 en paellera de 60 cm</span>
-    </a>
-  </nav>
 </article>
+
+<nav class="contiguas">
+  <a href="/TrabajoDesarrolloDeAplicaciones/entradas/rastreador-gasolineras-java/">« Cómo monté un rastreador de precios de gasolineras en Java</a>
+  <a href="/TrabajoDesarrolloDeAplicaciones/entradas/paella-marinera-60-cm/">Paella marinera para 12 en paellera de 60 cm »</a>
+</nav>
+<p><a href="/TrabajoDesarrolloDeAplicaciones/">← Volver al inicio</a></p>
 
   </main>
 
   <footer class="pie">
-    <div class="contenedor pie__fila">
-      <p><strong>Bitácora</strong> — Código, números y algún arroz.</p>
-      <nav aria-label="Navegación del pie">
-        <a href="/TrabajoDesarrolloDeAplicaciones/archivo/">Todas las entradas</a>
-        <a href="/TrabajoDesarrolloDeAplicaciones/etiquetas/">Etiquetas</a>
-        <a href="#arriba">Volver arriba ↑</a>
-      </nav>
-      <p class="pie__nota">© 2026 Abraham Rajo Rodríguez · Hecho a mano con HTML + CSS y generado con Eleventy.</p>
+    <div class="contenedor">
+      <p>Abraham Rajo Rodríguez · 2026 · Hecho con HTML, CSS y Eleventy</p>
     </div>
   </footer>
 </body>

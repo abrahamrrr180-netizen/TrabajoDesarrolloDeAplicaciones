@@ -3,47 +3,32 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% if title %}{{ title }} · {% endif %}{{ site.titulo }} · {{ site.autor }}</title>
+  <title>{% if title %}{{ title }} - {% endif %}{{ site.titulo }}</title>
   <meta name="description" content="{{ resumen or site.descripcion }}">
   <meta name="author" content="{{ site.autor }}">
-  <meta name="color-scheme" content="light dark">
   <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
 </head>
-<body id="arriba">
-  <a class="saltar" href="#contenido">Saltar al contenido</a>
-
+<body>
   <header class="cabecera">
-    <div class="contenedor cabecera__fila">
-      <a class="marca" href="/" aria-label="Bitácora, ir al inicio">
-        <img src="/img/favicon.svg" alt="" width="28" height="28">
-        <span>{{ site.titulo }}</span>
-      </a>
-      <nav class="menu" aria-label="Navegación principal">
+    <div class="contenedor">
+      <a class="marca" href="/">{{ site.titulo }}</a>
+      <nav class="menu">
         {%- set secciones = [["Inicio", "/"], ["Archivo", "/archivo/"], ["Etiquetas", "/etiquetas/"], ["Sobre mí", "/sobre-mi/"]] -%}
         {%- for s in secciones %}
-        <a href="{{ s[1] }}"{% if page.url == s[1] or (s[1] == "/etiquetas/" and "/etiquetas/" in page.url) %} aria-current="page"{% endif %}>{{ s[0] }}</a>
+        <a href="{{ s[1] }}"{% if page.url == s[1] %} class="activo"{% endif %}>{{ s[0] }}</a>
         {%- endfor %}
       </nav>
     </div>
   </header>
 
-  <main id="contenido">
+  <main class="contenedor">
     {{ content | safe }}
   </main>
 
   <footer class="pie">
-    <div class="contenedor pie__fila">
-      <p><strong>{{ site.titulo }}</strong> — {{ site.lema }}</p>
-      <nav aria-label="Navegación del pie">
-        <a href="/archivo/">Todas las entradas</a>
-        <a href="/etiquetas/">Etiquetas</a>
-        <a href="#arriba">Volver arriba ↑</a>
-      </nav>
-      <p class="pie__nota">© 2026 {{ site.autor }} · Hecho a mano con HTML + CSS y generado con Eleventy.</p>
+    <div class="contenedor">
+      <p>{{ site.autor }} · 2026 · Hecho con HTML, CSS y Eleventy</p>
     </div>
   </footer>
 </body>
