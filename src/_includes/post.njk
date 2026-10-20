@@ -1,0 +1,49 @@
+---
+layout: base.njk
+---
+{%- set anterior = collections.entradas | getNextCollectionItem(page) -%}
+{%- set siguiente = collections.entradas | getPreviousCollectionItem(page) -%}
+<article class="entrada">
+  <header class="entrada__cabecera contenedor contenedor--estrecho">
+    <nav class="miga" aria-label="Ruta">
+      <a href="/">Inicio</a> <span aria-hidden="true">/</span>
+      <a href="/archivo/">Archivo</a> <span aria-hidden="true">/</span>
+      <span aria-current="page">{{ title }}</span>
+    </nav>
+    <ul class="etiquetas">
+      {%- for t in tags %}{% if t != "post" %}
+      <li><a class="etiqueta" href="/etiquetas/{{ t | slugTag }}/">{{ t }}</a></li>
+      {%- endif %}{% endfor %}
+    </ul>
+    <h1>{{ title }}</h1>
+    <p class="entrada__entradilla">{{ resumen }}</p>
+    <p class="meta">
+      <time datetime="{{ page.date | fechaISO }}">{{ page.date | fecha }}</time>
+      <span aria-hidden="true">·</span> {{ content | lectura }} min de lectura
+      <span aria-hidden="true">·</span> {{ site.autor }}
+    </p>
+  </header>
+
+  <figure class="portada contenedor">
+    <img src="{{ portada }}" alt="{{ portadaAlt }}" width="1200" height="630">
+  </figure>
+
+  <div class="prosa contenedor contenedor--estrecho">
+    {{ content | safe }}
+  </div>
+
+  <nav class="contiguas contenedor contenedor--estrecho" aria-label="Más entradas">
+    {%- if anterior %}
+    <a class="contigua" href="{{ anterior.url }}" rel="prev">
+      <span class="contigua__rotulo">← Entrada anterior</span>
+      <span class="contigua__titulo">{{ anterior.data.title }}</span>
+    </a>
+    {%- else %}<span></span>{% endif %}
+    {%- if siguiente %}
+    <a class="contigua contigua--der" href="{{ siguiente.url }}" rel="next">
+      <span class="contigua__rotulo">Entrada siguiente →</span>
+      <span class="contigua__titulo">{{ siguiente.data.title }}</span>
+    </a>
+    {%- endif %}
+  </nav>
+</article>

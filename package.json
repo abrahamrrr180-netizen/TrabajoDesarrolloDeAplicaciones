@@ -1,0 +1,15 @@
+{
+  "name": "bitacora",
+  "version": "1.0.0",
+  "description": "Blog estático hecho con Eleventy (HTML + CSS) — Actividad 1, Desarrollo de Aplicaciones en Red (UNIR)",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve"
+  },
+  "author": "Abraham Rajo Rodríguez",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2"
+  },
+  "type": "module"
+}

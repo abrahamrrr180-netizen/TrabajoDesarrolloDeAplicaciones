@@ -1,0 +1,18 @@
+<article class="tarjeta{% if destacada %} tarjeta--destacada{% endif %}">
+  <a class="tarjeta__imagen" href="{{ e.url }}" tabindex="-1" aria-hidden="true">
+    <img src="{{ e.data.portada }}" alt="" width="1200" height="630" loading="lazy">
+  </a>
+  <div class="tarjeta__cuerpo">
+    <p class="meta">
+      <time datetime="{{ e.date | fechaISO }}">{{ e.date | fecha }}</time>
+      <span aria-hidden="true">·</span> {{ e.content | lectura }} min
+    </p>
+    <h3 class="tarjeta__titulo"><a href="{{ e.url }}">{{ e.data.title }}</a></h3>
+    <p class="tarjeta__resumen">{{ e.data.resumen }}</p>
+    <ul class="etiquetas">
+      {%- for t in e.data.tags %}{% if t != "post" %}
+      <li><a class="etiqueta" href="/etiquetas/{{ t | slugTag }}/">{{ t }}</a></li>
+      {%- endif %}{% endfor %}
+    </ul>
+  </div>
+</article>

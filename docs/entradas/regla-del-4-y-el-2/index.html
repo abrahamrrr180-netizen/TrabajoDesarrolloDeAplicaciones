@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Outs y la regla del 4 y el 2, con números de verdad · Bitácora · Abraham Rajo Rodríguez</title>
+  <meta name="description" content="Multiplicar los outs por 4 o por 2 es el atajo más usado en la mesa. Aquí comparo la regla con la probabilidad exacta y explico de dónde sale y cuándo empieza a fallar.">
+  <meta name="author" content="Abraham Rajo Rodríguez">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="/TrabajoDesarrolloDeAplicaciones/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/TrabajoDesarrolloDeAplicaciones/css/style.css">
+</head>
+<body id="arriba">
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera">
+    <div class="contenedor cabecera__fila">
+      <a class="marca" href="/TrabajoDesarrolloDeAplicaciones/" aria-label="Bitácora, ir al inicio">
+        <img src="/TrabajoDesarrolloDeAplicaciones/img/favicon.svg" alt="" width="28" height="28">
+        <span>Bitácora</span>
+      </a>
+      <nav class="menu" aria-label="Navegación principal">
+        <a href="/TrabajoDesarrolloDeAplicaciones/">Inicio</a>
+        <a href="/TrabajoDesarrolloDeAplicaciones/archivo/">Archivo</a>
+        <a href="/TrabajoDesarrolloDeAplicaciones/etiquetas/">Etiquetas</a>
+        <a href="/TrabajoDesarrolloDeAplicaciones/sobre-mi/">Sobre mí</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <article class="entrada">
+  <header class="entrada__cabecera contenedor contenedor--estrecho">
+    <nav class="miga" aria-label="Ruta">
+      <a href="/TrabajoDesarrolloDeAplicaciones/">Inicio</a> <span aria-hidden="true">/</span>
+      <a href="/TrabajoDesarrolloDeAplicaciones/archivo/">Archivo</a> <span aria-hidden="true">/</span>
+      <span aria-current="page">Outs y la regla del 4 y el 2, con números de verdad</span>
+    </nav>
+    <ul class="etiquetas">
+      <li><a class="etiqueta" href="/TrabajoDesarrolloDeAplicaciones/etiquetas/probabilidad/">probabilidad</a></li>
+      <li><a class="etiqueta" href="/TrabajoDesarrolloDeAplicaciones/etiquetas/poker/">póker</a></li>
+    </ul>
+    <h1>Outs y la regla del 4 y el 2, con números de verdad</h1>
+    <p class="entrada__entradilla">Multiplicar los outs por 4 o por 2 es el atajo más usado en la mesa. Aquí comparo la regla con la probabilidad exacta y explico de dónde sale y cuándo empieza a fallar.</p>
+    <p class="meta">
+      <time datetime="2026-10-12">12 de octubre de 2026</time>
+      <span aria-hidden="true">·</span> 3 min de lectura
+      <span aria-hidden="true">·</span> Abraham Rajo Rodríguez
+    </p>
+  </header>
+
+  <figure class="portada contenedor">
+    <img src="/TrabajoDesarrolloDeAplicaciones/img/portada-poker.svg" alt="Mesa de póker con un as y un rey de corazones y un flop con dos corazones" width="1200" height="630">
+  </figure>
+
+  <div class="prosa contenedor contenedor--estrecho">
+    <p>En Texas Hold'em casi nunca tienes la mejor mano en el flop; lo normal es ir «proyectado» y necesitar una carta concreta. La pregunta es siempre la misma: <strong>¿me compensa pagar para verla?</strong> Para responderla en la mesa, sin calculadora, existe la regla del 4 y el 2. Quería comprobar hasta qué punto es fiable.</p>
+<h2>Qué es un out</h2>
+<p>Un <em>out</em> es cada carta que queda en la baraja y que mejora tu mano hasta ganar. Ejemplo típico: llevas <strong>A♥ K♥</strong> y el flop es <strong>9♥ 4♥ Q♠</strong>. Tienes cuatro corazones; quedan 13 − 4 = <strong>9 corazones</strong> en la baraja, así que tienes 9 outs para el color.</p>
+<p>Después del flop conoces 5 cartas (tus 2 y las 3 de la mesa), por lo que quedan <strong>47 desconocidas</strong>.</p>
+<h2>La cuenta exacta</h2>
+<p>La forma más cómoda es calcular la probabilidad de <strong>no</strong> ligar en ninguna de las dos cartas que faltan y restarla de 1:</p>
+<p class="formula">P(ligar en turn o river) = 1 − C(47−n, 2) / C(47, 2)</p>
+<p>Con 9 outs: 1 − (38·37)/(47·46) = 1 − 1406/2162 ≈ <strong>35,0 %</strong>.</p>
+<p>Si solo queda una carta por ver (del turn al river) es directo: n/46. Con 9 outs, 9/46 ≈ <strong>19,6 %</strong>.</p>
+<h2>De dónde sale la regla</h2>
+<p>Desarrollando la expresión anterior:</p>
+<p class="formula">1 − (1 − n/47)(1 − n/46) = n/47 + n/46 − n²/2162</p>
+<p>Los dos primeros términos suman aproximadamente 2n/46,5 ≈ <strong>4,3·n %</strong>. El último resta, y crece con el cuadrado de n. Para pocos outs ambos efectos casi se cancelan y queda el famoso <strong>4·n</strong>. Con una sola carta, n/46 ≈ 2,2·n %, que se redondea a <strong>2·n</strong>.</p>
+<h2>¿Cuánto se equivoca?</h2>
+<div class="tabla">
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Outs</th>
+<th style="text-align:left">Proyecto típico</th>
+<th style="text-align:right">Exacta (2 cartas)</th>
+<th style="text-align:right">4·n</th>
+<th style="text-align:right">Exacta (1 carta)</th>
+<th style="text-align:right">2·n</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">4</td>
+<td style="text-align:left">Escalera interna</td>
+<td style="text-align:right">16,5 %</td>
+<td style="text-align:right">16 %</td>
+<td style="text-align:right">8,7 %</td>
+<td style="text-align:right">8 %</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td style="text-align:left">Escalera abierta</td>
+<td style="text-align:right">31,5 %</td>
+<td style="text-align:right">32 %</td>
+<td style="text-align:right">17,4 %</td>
+<td style="text-align:right">16 %</td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td style="text-align:left">Color</td>
+<td style="text-align:right">35,0 %</td>
+<td style="text-align:right">36 %</td>
+<td style="text-align:right">19,6 %</td>
+<td style="text-align:right">18 %</td>
+</tr>
+<tr>
+<td style="text-align:right">12</td>
+<td style="text-align:left">Color + pareja</td>
+<td style="text-align:right">45,0 %</td>
+<td style="text-align:right">48 %</td>
+<td style="text-align:right">26,1 %</td>
+<td style="text-align:right">24 %</td>
+</tr>
+<tr>
+<td style="text-align:right">15</td>
+<td style="text-align:left">Color + escalera</td>
+<td style="text-align:right">54,1 %</td>
+<td style="text-align:right">60 %</td>
+<td style="text-align:right">32,6 %</td>
+<td style="text-align:right">30 %</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure>
+  <img src="/TrabajoDesarrolloDeAplicaciones/img/poker-grafica.svg" alt="Gráfica que compara la probabilidad exacta con la regla del 4 y su versión corregida entre 1 y 15 outs" width="1000" height="520" loading="lazy">
+  <figcaption>Hasta 8 outs la regla del 4 es casi exacta; a partir de ahí sobreestima. La corrección 4·n − (n − 8) la pega a la curva real.</figcaption>
+</figure>
+<p>Hasta 8 o 9 outs el error es de un punto como mucho. A partir de ahí el término n² pesa y la regla se pasa: con 15 outs dice 60 % cuando la realidad es 54 %. El ajuste que uso es <strong>restar (n − 8) cuando tengo más de 8 outs</strong>: con 15 outs, 60 − 7 = 53 %, a un punto del valor exacto.</p>
+<h2>Cómo usarla para decidir</h2>
+<p>La probabilidad sola no dice nada; hay que compararla con lo que cuesta pagar. Si el bote es de 100 y el rival apuesta 50, pagas 50 para optar a un bote final de 200. Necesitas ganar al menos:</p>
+<p class="formula">50 / (100 + 50 + 50) = 25 %</p>
+<ul>
+<li><strong>Si es la última apuesta antes del river</strong> (te queda ver una carta): con el color tienes ≈ 19,6 %. No llega al 25 %, así que solo pagarías contando con cobrar más si ligas (<em>implied odds</em>).</li>
+<li><strong>Si es un all-in en el flop</strong> (ves turn y river sin pagar más): tienes ≈ 35 %, por encima del 25 %. Pagar es rentable a largo plazo.</li>
+</ul>
+<p class="nota">Error que cometía al principio: usar la regla del 4 en el flop cuando el rival todavía puede apostar en el turn. Si vas a tener que pagar otra vez, lo correcto es usar la regla del 2 en cada calle.</p>
+
+  </div>
+
+  <nav class="contiguas contenedor contenedor--estrecho" aria-label="Más entradas">
+    <a class="contigua" href="/TrabajoDesarrolloDeAplicaciones/entradas/rastreador-gasolineras-java/" rel="prev">
+      <span class="contigua__rotulo">← Entrada anterior</span>
+      <span class="contigua__titulo">Cómo monté un rastreador de precios de gasolineras en Java</span>
+    </a>
+    <a class="contigua contigua--der" href="/TrabajoDesarrolloDeAplicaciones/entradas/paella-marinera-60-cm/" rel="next">
+      <span class="contigua__rotulo">Entrada siguiente →</span>
+      <span class="contigua__titulo">Paella marinera para 12 en paellera de 60 cm</span>
+    </a>
+  </nav>
+</article>
+
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie__fila">
+      <p><strong>Bitácora</strong> — Código, números y algún arroz.</p>
+      <nav aria-label="Navegación del pie">
+        <a href="/TrabajoDesarrolloDeAplicaciones/archivo/">Todas las entradas</a>
+        <a href="/TrabajoDesarrolloDeAplicaciones/etiquetas/">Etiquetas</a>
+        <a href="#arriba">Volver arriba ↑</a>
+      </nav>
+      <p class="pie__nota">© 2026 Abraham Rajo Rodríguez · Hecho a mano con HTML + CSS y generado con Eleventy.</p>
+    </div>
+  </footer>
+</body>
+</html>

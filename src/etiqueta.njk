@@ -1,0 +1,21 @@
+---
+layout: base.njk
+pagination:
+  data: collections.etiquetas
+  size: 1
+  alias: etiqueta
+eleventyComputed:
+  title: "Etiqueta «{{ etiqueta }}»"
+permalink: "/etiquetas/{{ etiqueta | slugTag }}/"
+---
+<section class="contenedor pagina">
+  <nav class="miga" aria-label="Ruta"><a href="/">Inicio</a> <span aria-hidden="true">/</span> <a href="/etiquetas/">Etiquetas</a> <span aria-hidden="true">/</span> <span aria-current="page">{{ etiqueta }}</span></nav>
+  <h1>#{{ etiqueta }}</h1>
+  <p class="pagina__intro">{{ collections[etiqueta].length }} {% if collections[etiqueta].length == 1 %}entrada{% else %}entradas{% endif %} con esta etiqueta. <a href="/etiquetas/">Ver todas las etiquetas</a>.</p>
+  <div class="rejilla rejilla--simple">
+    {%- for e in collections[etiqueta] | reverse %}
+      {%- set destacada = false %}
+      {% include "tarjeta.njk" %}
+    {%- endfor %}
+  </div>
+</section>
