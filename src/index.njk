@@ -1,0 +1,10 @@
+---
+layout: base.njk
+---
+<h1>Bienvenido a mi blog</h1>
+<p>Soy Abraham, estudiante de Ingeniería Informática. Aquí escribo sobre proyectos que programo, algún cálculo curioso y recetas que me salen bien.</p>
+
+<h2 class="seccion">Últimas entradas</h2>
+{%- for e in collections.entradas %}
+  {% include "tarjeta.njk" %}
+{%- endfor %}

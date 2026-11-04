@@ -1,0 +1,12 @@
+---
+layout: base.njk
+title: Etiquetas
+permalink: /etiquetas/
+---
+<h1>Etiquetas</h1>
+<p>Elige un tema para ver sus entradas.</p>
+<ul class="lista">
+  {%- for t in collections.etiquetas %}
+  <li><a href="/etiquetas/{{ t | slugTag }}/">#{{ t }}</a> ({{ collections[t].length }})</li>
+  {%- endfor %}
+</ul>

@@ -1,0 +1,12 @@
+---
+layout: base.njk
+title: Archivo
+permalink: /archivo/
+---
+<h1>Archivo</h1>
+<p>Todas las entradas, de la más nueva a la más antigua.</p>
+<ul class="lista">
+  {%- for e in collections.entradas %}
+  <li><span class="meta">{{ e.date | fecha }}</span> — <a href="{{ e.url }}">{{ e.data.title }}</a></li>
+  {%- endfor %}
+</ul>

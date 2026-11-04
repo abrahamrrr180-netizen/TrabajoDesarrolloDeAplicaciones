@@ -1,0 +1,26 @@
+---
+layout: base.njk
+---
+{%- set anterior = collections.entradas | getNextCollectionItem(page) -%}
+{%- set siguiente = collections.entradas | getPreviousCollectionItem(page) -%}
+<article class="entrada">
+  <h1>{{ title }}</h1>
+  <p class="meta">
+    {{ page.date | fecha }} ·
+    {%- for t in tags %} <a href="/etiquetas/{{ t | slugTag }}/">#{{ t }}</a>{% endfor %}
+  </p>
+
+  <img class="portada" src="{{ portada }}" alt="{{ portadaAlt }}" width="1200" height="630">
+
+  {{ content | safe }}
+</article>
+
+<nav class="contiguas">
+  {%- if anterior %}
+  <a href="{{ anterior.url }}">« {{ anterior.data.title }}</a>
+  {%- else %}<span></span>{% endif %}
+  {%- if siguiente %}
+  <a href="{{ siguiente.url }}">{{ siguiente.data.title }} »</a>
+  {%- endif %}
+</nav>
+<p><a href="/">← Volver al inicio</a></p>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi rastreador de precios de gasolineras en Java - Bitácora</title>
+  <meta name="description" content="Una aplicación de escritorio que hice para saber qué gasolinera es la más barata usando los datos abiertos del Ministerio.">
+  <meta name="author" content="Abraham Rajo Rodríguez">
+  <link rel="stylesheet" href="/TrabajoDesarrolloDeAplicaciones/css/style.css">
+</head>
+<body>
+  <header class="cabecera">
+    <div class="contenedor">
+      <a class="marca" href="/TrabajoDesarrolloDeAplicaciones/">Bitácora</a>
+      <nav class="menu">
+        <a href="/TrabajoDesarrolloDeAplicaciones/">Inicio</a>
+        <a href="/TrabajoDesarrolloDeAplicaciones/archivo/">Archivo</a>
+        <a href="/TrabajoDesarrolloDeAplicaciones/etiquetas/">Etiquetas</a>
+        <a href="/TrabajoDesarrolloDeAplicaciones/sobre-mi/">Sobre mí</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contenedor">
+    <article class="entrada">
+  <h1>Mi rastreador de precios de gasolineras en Java</h1>
+  <p class="meta">
+    10 de octubre de 2026 · <a href="/TrabajoDesarrolloDeAplicaciones/etiquetas/java/">#java</a> <a href="/TrabajoDesarrolloDeAplicaciones/etiquetas/datos-abiertos/">#datos abiertos</a> <a href="/TrabajoDesarrolloDeAplicaciones/etiquetas/proyectos/">#proyectos</a>
+  </p>
+
+  <img class="portada" src="/TrabajoDesarrolloDeAplicaciones/img/portada-gasolineras.jpg" alt="Fachada de una gasolinera antigua en una calle de Vitoria" width="1200" height="630">
+
+  <p>Hace un tiempo me di cuenta de que entre gasolineras de la misma ciudad podía haber más de 10 céntimos de diferencia por litro. Llenando el depósito eso son varios euros cada vez, así que decidí hacerme un programa en Java que me dijera cuál es la más barata.</p>
+<h2>De dónde saco los precios</h2>
+<p>El Ministerio publica los precios de todas las gasolineras de España en un servicio web gratuito que devuelve los datos en JSON. Para cada gasolinera viene el nombre, la dirección, el municipio, la provincia y el precio de cada combustible. No hace falta registrarse, así que es perfecto para un proyecto personal.</p>
+<h2>Cómo funciona</h2>
+<p>El programa tiene cuatro partes:</p>
+<ol>
+<li>Descarga los datos (o los lee de un fichero guardado para hacer pruebas).</li>
+<li>Guarda la información de cada gasolinera.</li>
+<li>Los filtra por provincia y combustible.</li>
+<li>Los muestra en una ventana hecha con Swing, en una tabla que se puede ordenar por precio.</li>
+</ol>
+<h2>Problemas que me encontré</h2>
+<ul>
+<li>Los precios vienen con coma (1,589) y Java espera un punto, así que al principio me daba error al convertirlos. Lo arreglé cambiando la coma por un punto antes de convertir.</li>
+<li>Algunas gasolineras no venden todos los combustibles y el precio viene vacío.</li>
+<li>Mientras descargaba los datos la ventana se quedaba congelada. Lo solucioné haciendo la descarga en segundo plano.</li>
+</ul>
+<p>Me gustaría añadirle un mapa y guardar los precios de cada día para ver cómo cambian.</p>
+
+</article>
+
+<nav class="contiguas"><span></span>
+  <a href="/TrabajoDesarrolloDeAplicaciones/entradas/regla-del-4-y-el-2/">La regla del 4 y el 2 en el póker »</a>
+</nav>
+<p><a href="/TrabajoDesarrolloDeAplicaciones/">← Volver al inicio</a></p>
+
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <p>Abraham Rajo Rodríguez · 2026 · Hecho con HTML, CSS y Eleventy</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,17 @@
+---
+layout: base.njk
+pagination:
+  data: collections.etiquetas
+  size: 1
+  alias: etiqueta
+eleventyComputed:
+  title: "#{{ etiqueta }}"
+permalink: "/etiquetas/{{ etiqueta | slugTag }}/"
+---
+<h1>Entradas con #{{ etiqueta }}</h1>
+<ul class="lista">
+  {%- for e in collections[etiqueta] | reverse %}
+  <li><span class="meta">{{ e.date | fecha }}</span> — <a href="{{ e.url }}">{{ e.data.title }}</a></li>
+  {%- endfor %}
+</ul>
+<p><a href="/etiquetas/">← Todas las etiquetas</a></p>
